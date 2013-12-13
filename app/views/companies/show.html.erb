@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @company.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @company.email %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @company.site %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @company.adress %>
+</p>
+
+<p>
+  <strong>Responsible:</strong>
+  <%= link_to @owner.email, account_user_path(@company.account_id, @company.responsible) %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @company.contact_id %>
+</p>
+
+<%= link_to 'Edit', edit_account_company_path(current_user.account_id, @company) %> |
+<%= link_to 'Back', account_companies_path(current_user.account_id) %>
