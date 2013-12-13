@@ -1,0 +1,29 @@
+<h1>Listing accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Owner</th>
+      <th>Deeals</th>
+      <th>Contacts</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.owner_id %></td>
+        <td><%= account.deals %></td>
+        <td><%= account.contacts %></td>
+        <td><%= link_to 'Show', account %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path %>
