@@ -1,0 +1,11 @@
+<div class='paper'>
+
+  <h1>Editing project</h1>
+
+  <%= render 'form' %>
+  
+  <%= link_to 'Show', account_user_path(@user.account_id, @user) %>
+  <%= link_to_function 'Cancel', 'history.back()' %>
+  
+</div>
+

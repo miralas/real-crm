@@ -1,0 +1,31 @@
+<div class='paper'>
+  <h1>Listing users</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr id='user_<%= user.id %>' >
+          <td><%= user.email %></td>
+          <td><%= link_to 'Show', account_user_path(user.account_id, user) %></td>
+          <td><%= link_to 'Edit', edit_account_user_path(user.account_id, user) %></td>
+          <td><%= link_to 'Destroy', account_user_path(user.account_id, user), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New User', new_account_user_path(current_user.account_id) %>
+  <%= link_to_function 'Back', 'history.back()' %>
+</div>

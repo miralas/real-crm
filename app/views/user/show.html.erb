@@ -1,0 +1,15 @@
+<div class='paper'>
+
+  <%= @user.email %>
+  <%= @user.name %>
+  <%= @user.surname %>
+  <%= @user.mobile_phone %>
+  <%= @user.work_phone %>
+  <%= @user.notes %>
+  
+  <br/>
+  
+  <%= link_to 'Edit', edit_account_user_path(@user.account_id, @user) %>
+  <%= link_to_function 'Back', 'history.back()' %>
+  
+</div>
