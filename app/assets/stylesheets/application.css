@@ -11,3 +11,36 @@
  *= require_self
  *= require_tree .
  */
+
+.paper {
+  border: 1px solid #bbb;
+  box-shadow: 3px 3px 3px grey;
+  border-radius: 3px;
+  padding: 20px;
+  position: relative;
+  background: image_url('clean_textile.png');
+  &:before {
+    content: " ";
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    height: 7px;
+    width: 8px;
+    background: #888;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px grey;
+  }
+  &:after {
+    content: " ";
+    right: 10px;
+    top: 12px;
+    position: absolute;
+    height: 7px;
+    width: 7px;
+    background: #888;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px grey;
+  }
+}

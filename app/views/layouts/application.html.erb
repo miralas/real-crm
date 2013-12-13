@@ -7,7 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  
+  <div id="login">
+    <% if session[:user_id] %>
+      You may <%= link_to t('sign_out'), logout_url, method: :delete %> here.<br/>
+      <%= "Hello #{User.find(session[:user_id]).email}" %>
+    <% else %>
+      <%= link_to t('log_in'), login_path %>
+    <% end %>
+    <br/>
+    <%= link_to 'english', url_for(locale: 'en') %> |
+    <%= link_to 'русский', url_for(locale: 'ru') %>
+  </div>
 <%= yield %>
 
 </body>
