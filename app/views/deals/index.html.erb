@@ -1,0 +1,39 @@
+<h1>Listing deals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Budget</th>
+      <th>Responsible</th>
+      <th>Notes</th>
+      <th>Task</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deals.each do |deal| %>
+      <tr id='deal_<%= deal.id %>'>
+        <td><%= deal.name %></td>
+        <td><%= deal.status %></td>
+        <td><%= deal.budget %></td>
+        <% @owner = User.find_by(id: deal.responsible) %>
+        <td><%= link_to @owner.email, account_user_path(deal.account_id, deal.responsible) %></td>
+        <td><%= deal.notes %></td>
+        <td><%= deal.task %></td>
+        <td><%= link_to 'Show', account_deal_path(current_user.account_id, deal.id) %></td>
+        <td><%= link_to 'Edit', edit_account_deal_path(current_user.account_id, deal) %></td>
+        <td><%= link_to 'Destroy', account_deal_path(current_user.account_id, deal), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Deal', new_account_deal_path %>
+<%= link_to_function 'Back', 'history.back()' %>

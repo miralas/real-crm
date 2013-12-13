@@ -1,0 +1,6 @@
+<h1>Editing deal</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', account_deal_path(@deal.account_id, @deal.id) %> |
+<%= link_to_function 'Back', 'history.back()' %>

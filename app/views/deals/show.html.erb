@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deal.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @deal.status %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @deal.budget %>
+</p>
+
+<p>
+  <strong>Responsible:</strong>
+  <%= link_to @owner.email, account_user_path(@deal.account_id, @deal.responsible) %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @deal.notes %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @deal.task %>
+</p>
+
+<%= link_to 'Edit', edit_account_deal_path(@deal.account_id, @deal) %> |
+<%= link_to_function 'Back', 'history.back()' %>
