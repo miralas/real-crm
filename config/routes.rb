@@ -1,6 +1,8 @@
 RealCrm::Application.routes.draw do
 
   
+  resources :contacts
+
   root to: 'main#index', as: 'home' 
     
   resources :accounts do  
