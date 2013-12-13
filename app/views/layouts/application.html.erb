@@ -19,6 +19,17 @@
     <%= link_to 'english', url_for(locale: 'en') %> |
     <%= link_to 'русский', url_for(locale: 'ru') %>
   </div>
+  
+  <% if current_user %>
+  <%= link_to 'My Profile', account_user_path(current_user.account_id, current_user)%>
+  <%= link_to 'Users', account_user_index_path(current_user.account_id) %>
+  <%= link_to 'Deals', account_deals_path(current_user.account_id)%>
+  <%= link_to 'Companies', account_companies_path(current_user.account_id) %>
+  <%= link_to 'Contacts', account_contacts_path(current_user.account_id) %>
+  <%= link_to 'Calendar', account_calendar_path(current_user.account_id)%>
+  <% else %>
+    <%= redirect_to login_path %>
+  <% end %>
 <%= yield %>
 
 </body>

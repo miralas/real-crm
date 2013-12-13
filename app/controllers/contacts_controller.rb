@@ -1,15 +1,18 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_special_params, only: [:show]
+  before_action :authorize
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where(account_id: current_user.account_id)
   end
 
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+   
   end
 
   # GET /contacts/new
@@ -25,10 +28,11 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @contact.account_id = current_user.account_id
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to account_contact_path(current_user.account_id, @contact), notice: 'Contact was successfully created.' }
         format.json { render action: 'show', status: :created, location: @contact }
       else
         format.html { render action: 'new' }
@@ -42,7 +46,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to account_contacts_path(current_user.account_id), notice: 'Contact was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,8 +60,8 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url }
-      format.json { head :no_content }
+      format.html { render nothing: true }
+      format.js
     end
   end
 
@@ -65,6 +69,11 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def set_special_params
+      @owner   = User.find_by(id: @contact.responsible)
+      @company = Company.find_by(id: @contact.company_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

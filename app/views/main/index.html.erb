@@ -1,13 +1,3 @@
 <% if notice %>
   <p id="notice"><%= notice %></p>
 <% end %>
-
-<% if current_user %>
-<%= link_to 'My Profile', account_user_path(current_user.account_id, current_user)%>
-<%= link_to 'Users', account_user_index_path(current_user.account_id) %>
-<%= link_to 'Deals', account_deals_path(current_user.account_id)%>
-<%= link_to 'Companies', account_companies_path(current_user.account_id) %>
-<%= link_to 'Calendar', account_calendar_path(current_user.account_id)%>
-<% else %>
-  <%= redirect_to login_path %>
-<% end %>

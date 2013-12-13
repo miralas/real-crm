@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', companies_path %>
+<%= link_to 'Show', account_company_path(current_user.account_id, @company) %> |
+<%= link_to 'Back', account_companies_path(current_user.account_id) %>

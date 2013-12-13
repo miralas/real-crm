@@ -8,7 +8,8 @@ class CreateCompanies < ActiveRecord::Migration
       t.text :adress
       t.integer :responsible
       t.belongs_to :account
-      t.integer :contact_id
+      t.belongs_to :contact
+      t.text :notes
 
       t.timestamps
     end

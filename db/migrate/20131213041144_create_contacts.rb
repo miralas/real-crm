@@ -7,8 +7,8 @@ class CreateContacts < ActiveRecord::Migration
       t.string :skype
       t.string :post
       t.integer :responsible
-      t.integer :account_id
-      t.integer :company_id
+      t.belongs_to :account
+      t.belongs_to :company
       t.text :notes
 
       t.timestamps

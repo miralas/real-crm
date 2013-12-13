@@ -27,17 +27,12 @@
 
 <p>
   <strong>Responsible:</strong>
-  <%= @contact.responsible %>
-</p>
-
-<p>
-  <strong>Account:</strong>
-  <%= @contact.account_id %>
+  <%= link_to @owner.email, account_user_path(@contact.account_id, @contact.responsible) %>
 </p>
 
 <p>
   <strong>Company:</strong>
-  <%= @contact.company_id %>
+  <%= link_to @company.name, account_contact_path(@contact.account_id, @contact.company_id) %>
 </p>
 
 <p>
@@ -45,5 +40,5 @@
   <%= @contact.notes %>
 </p>
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Edit', edit_account_contact_path(current_user.account_id, @contact) %> |
+<%= link_to 'Back', account_contacts_path(current_user.account_id) %>

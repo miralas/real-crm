@@ -32,7 +32,12 @@
 
 <p>
   <strong>Contact:</strong>
-  <%= @company.contact_id %>
+  <%= link_to @contact.name, account_contact_path(@company.account_id, @company.contact_id) %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @company.notes %>
 </p>
 
 <%= link_to 'Edit', edit_account_company_path(current_user.account_id, @company) %> |

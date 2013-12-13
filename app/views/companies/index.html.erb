@@ -10,6 +10,7 @@
       <th>Adress</th>
       <th>Responsible</th>
       <th>Contact</th>
+      <th>Notes</th>
       <th></th>
       <th></th>
       <th></th>
@@ -26,7 +27,9 @@
         <td><%= company.adress %></td>
         <% @owner = User.find_by(id: company.responsible) %>
         <td><%= link_to @owner.email, account_user_path(company.account_id, company.responsible) %></td>
-        <td><%= company.contact_id %></td>
+        <% @contact = Contact.find_by(id: company.contact_id) %>
+        <td><%= link_to @contact.name, account_contact_path(company.account_id, company.contact_id) %></td>
+        <td><%= company.notes %></td>
         <td><%= link_to 'Show', account_company_path(current_user.account_id, company) %></td>
         <td><%= link_to 'Edit', edit_account_company_path(current_user.account_id, company) %></td>
         <td><%= link_to 'Destroy', account_company_path(current_user.account_id, company), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>

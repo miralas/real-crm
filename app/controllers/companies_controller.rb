@@ -11,7 +11,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-    @owner = User.find_by(id: @company.responsible)
+    @owner   = User.find_by(id: @company.responsible)
+    @contact = Contact.find_by(id: @company.contact_id)
   end
 
   # GET /companies/new
@@ -45,7 +46,7 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html { redirect_to account_companies_path(current_user.account_id), notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -72,6 +73,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :phone, :email, :site, :adress, :responsible, :account_id, :contact_id)
+      params.require(:company).permit(:name, :phone, :email, :site, :adress, :responsible, :account_id, :contact_id, :notes)
     end
 end

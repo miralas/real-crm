@@ -37,7 +37,11 @@
   </div>
   <div class="field">
     <%= f.label :contact_id %><br>
-    <%= f.number_field :contact_id %>
+    <%= f.collection_select :contact_id, current_user.account.contacts, :id, :email, {include_blank: false} %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
   </div>
   <div class="actions">
     <%= f.submit %>
