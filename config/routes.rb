@@ -1,6 +1,6 @@
 RealCrm::Application.routes.draw do
 
-  resources :tasks
+  
 
   root to: 'main#index', as: 'home' 
     
@@ -9,6 +9,7 @@ RealCrm::Application.routes.draw do
     resources :deals
     resources :companies
     resources :contacts
+    resources :tasks
     get 'calendar' => 'calendar#index'
   end
 

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :account
   has_many :deals
   has_many :companies
+  has_many :tasks
   has_secure_password
   
   validates_associated :role
