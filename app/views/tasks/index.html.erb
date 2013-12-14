@@ -8,7 +8,6 @@
       <th>Description</th>
       <th>Date</th>
       <th>Responsible</th>
-      <th>Account</th>
       <th>Contact</th>
       <th>Company</th>
       <th>Deal</th>
@@ -20,19 +19,22 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr id='task_<%= task.id %>'>
         <td><%= task.title %></td>
-        <td><%= task.type %></td>
+        <td><%= task.type_of_task %></td>
         <td><%= task.description %></td>
         <td><%= task.date %></td>
-        <td><%= task.responsible %></td>
-        <td><%= task.account_id %></td>
-        <td><%= task.contact_id %></td>
-        <td><%= task.company_id %></td>
-        <td><%= task.deal_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% @owner = User.find_by(id: task.responsible) %>
+        <td><%= link_to @owner.email, account_user_path(task.account_id, task.responsible) %></td>
+        <% @contact = Contact.find_by(id: task.contact_id) %>
+        <td><%= link_to @contact.name, account_contact_path(task.account_id, task.contact_id) %></td>
+        <% @company = Company.find_by(id: task.company_id) %>
+        <td><%= link_to @company.name, account_company_path(task.account_id, task.company_id) %></td>
+        <% @deal = Deal.find_by(id: task.deal_id) %>
+        <td><%= link_to @deal.name, account_deal_path(task.account_id, task.deal_id) %></td>
+        <td><%= link_to 'Show', account_task_path(task.account_id, task) %></td>
+        <td><%= link_to 'Edit', edit_account_task_path(task.account_id, task) %></td>
+        <td><%= link_to 'Destroy', account_task_path(task.account_id, task), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_account_task_path %>

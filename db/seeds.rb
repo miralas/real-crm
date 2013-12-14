@@ -52,5 +52,29 @@ deals = Deal.create([
 if deals[0].save and deals[1].save and deals[2].save
   puts "Default deals: " + deals.map(&:name).join(', ')
 else
-  puts '>>> Accounts not created!'
+  puts '>>> Deals not created!'
+end
+
+Contact.destroy_all
+contacts = Contact.create([
+  {name: 'first deal', email: 'first@first.com',   account_id: accounts[0].id, responsible: users[0].id, company_id: 1},
+  {name: 'second_deal',email: 'secon@second.com',  account_id: accounts[1].id, responsible: users[1].id, company_id: 2},
+  {name: 'third deal', email: 'third@third.com',   account_id: accounts[2].id, responsible: users[2].id, company_id: 3}
+])
+if contacts[0].save and contacts[1].save and contacts[2].save
+  puts "Default contacts: " + contacts.map(&:name).join(', ')
+else
+  puts '>>> contacts not created!'
+end
+
+Company.destroy_all
+companys = Company.create([
+  {name: 'first deal', email: 'first@first.com',   account_id: accounts[0].id, responsible: users[0].id, contact_id: contacts[0].id},
+  {name: 'second_deal',email: 'secon@second.com',  account_id: accounts[1].id, responsible: users[1].id, contact_id: contacts[0].id},
+  {name: 'third deal', email: 'third@third.com',   account_id: accounts[2].id, responsible: users[2].id, contact_id: contacts[0].id}
+])
+if companys[0].save and companys[1].save and companys[2].save
+  puts "Default companys: " + companys.map(&:name).join(', ')
+else
+  puts '>>> companys not created!'
 end

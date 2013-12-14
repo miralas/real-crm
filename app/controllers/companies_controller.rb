@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_special_params, only: [:show]
   before_action :authorize
 
   # GET /companies
@@ -69,6 +70,11 @@ class CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+    end
+
+    def set_special_params
+      @owner   = User.find_by(id: @company.responsible)
+      @contact = Contact.find_by(id: @company.contact_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

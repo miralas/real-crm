@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_special_params, only: [:show]
+  before_action :authorize
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.where(account_id: current_user.account_id)
   end
 
   # GET /tasks/1
@@ -25,10 +27,11 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.account_id = current_user.account_id
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to account_tasks_path(current_user.account_id), notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
@@ -42,7 +45,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to account_tasks_path(current_user.account_id), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,8 +59,8 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url }
-      format.json { head :no_content }
+      format.html { render nothing: true }
+      format.js
     end
   end
 
@@ -67,8 +70,15 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
+    def set_special_params
+      @owner = User.find_by(id: @task.responsible)
+      @contact = Contact.find_by(id: @task.contact_id)
+      @company = Company.find_by(id: @task.company_id)
+      @deal = Deal.find_by(id: @task.deal_id)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :type, :description, :date, :responsible, :account_id, :contact_id, :company_id, :deal_id)
+      params.require(:task).permit(:title, :type_of_task, :description, :date, :responsible, :account_id, :contact_id, :company_id, :deal_id)
     end
 end

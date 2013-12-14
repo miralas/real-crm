@@ -7,7 +7,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @task.type %>
+  <%= @task.type_of_task %>
 </p>
 
 <p>
@@ -26,11 +26,6 @@
 </p>
 
 <p>
-  <strong>Account:</strong>
-  <%= @task.account_id %>
-</p>
-
-<p>
   <strong>Contact:</strong>
   <%= @task.contact_id %>
 </p>
@@ -45,5 +40,5 @@
   <%= @task.deal_id %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_account_task_path(@task.account_id, @task) %> |
+<%= link_to 'Back', account_tasks_path %>
