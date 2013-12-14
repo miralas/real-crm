@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  type: 
+  description: MyText
+  date: 2013-12-14 04:30:50
+  responsible: 1
+  account_id: 1
+  contact_id: 1
+  company_id: 1
+  deal_id: 1
+
+two:
+  title: MyString
+  type: 
+  description: MyText
+  date: 2013-12-14 04:30:50
+  responsible: 1
+  account_id: 1
+  contact_id: 1
+  company_id: 1
+  deal_id: 1

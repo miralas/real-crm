@@ -1,5 +1,7 @@
 RealCrm::Application.routes.draw do
 
+  resources :tasks
+
   root to: 'main#index', as: 'home' 
     
   resources :accounts do  
