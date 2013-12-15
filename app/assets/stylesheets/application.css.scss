@@ -1,0 +1,47 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+.paper {
+  border: 1px solid #bbb;
+  box-shadow: 3px 3px 3px grey;
+  border-radius: 3px;
+  padding: 20px;
+  position: relative;
+  background: image_url('clean_textile.png');
+  
+  &:before {
+    content: " ";
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    height: 7px;
+    width: 8px;
+    background: #888;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px grey;
+  }
+  &:after {
+    content: " ";
+    right: 10px;
+    top: 12px;
+    position: absolute;
+    height: 7px;
+    width: 7px;
+    background: #888;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    box-shadow: 2px 2px 2px grey;
+  }
+}

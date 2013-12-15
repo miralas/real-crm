@@ -1,0 +1,24 @@
+<h1>Listing histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Action</th>
+      <th>Obj link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @histories.each do |history| %>
+      <tr>
+        <% @owner = User.find_by(id: history.user_id) %>
+        <td><%= link_to @owner.email, account_user_path(history.account_id, history.user_id) %></td>
+        <td><%= history.action %></td>
+        <td><%= link_to history.obj_name, history.obj_link %> <%= history.created_at.to_formatted_s(:long) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
