@@ -1,5 +1,6 @@
 class UserController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  after_action :history_note, only: [:create, :edit, :destroy]
   skip_before_action :authorize, only: [:new, :create]
 
   # GET /users
@@ -70,5 +71,10 @@ class UserController < ApplicationController
     
     def create_session_for user
       session[:user_id] = user.id
+    end
+    
+    def history_note
+      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: " #{@user.name}", obj_link: account_deal_path(current_user.account_id, @user.id))
+      note.save
     end
 end

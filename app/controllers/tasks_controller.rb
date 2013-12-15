@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_special_params, only: [:show]
+  after_action :history_note, only: [:create, :edit, :destroy]
   before_action :authorize
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.where(account_id: current_user.account_id)
     respond_to do |format|
       format.html { 
         @tasks = Task.where(account_id: current_user.account_id)
@@ -26,6 +26,8 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @task.starts_at = params[:date]
+    @task.ends_at = params[:date]
   end
 
   # GET /tasks/1/edit
@@ -88,6 +90,11 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :type_of_task, :description, :date, :responsible, :account_id, :contact_id, :company_id, :deal_id)
+      params.require(:task).permit(:title, :type_of_task, :description, :starts_at, :ends_at, :all_day, :responsible, :account_id, :contact_id, :company_id, :deal_id)
+    end
+    
+    def history_note
+      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: "#{@task.name}", obj_link: account_deal_path(current_user.account_id, @task.id))
+      note.save
     end
 end

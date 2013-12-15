@@ -1,6 +1,7 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
   before_action :set_special_params, only: [:show]
+  after_action :history_note, only: [:create, :edit, :destroy]
   before_action :authorize
 
   # GET /deals
@@ -77,5 +78,10 @@ class DealsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
       params.require(:deal).permit(:name, :status, :budget, :responsible, :notes, :task, :account_id)
+    end
+    
+    def history_note
+      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: "#{@deal.name}", obj_link: account_deal_path(current_user.account_id, @deal.id))
+      note.save
     end
 end

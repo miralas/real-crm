@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :set_special_params, only: [:show]
+  after_action :history_note, only: [:create, :edit, :destroy]
   before_action :authorize
 
   # GET /contacts
@@ -79,5 +80,10 @@ class ContactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:name, :phone, :email, :skype, :post, :responsible, :account_id, :company_id, :notes)
+    end
+    
+    def history_note
+      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: "#{@contact.name}", obj_link: account_deal_path(current_user.account_id, @contact.id))
+      note.save
     end
 end

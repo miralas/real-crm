@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_action :set_special_params, only: [:show]
+  after_action :history_note, only: [:create, :edit, :destroy]
   before_action :authorize
 
   # GET /companies
@@ -80,5 +81,10 @@ class CompaniesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(:name, :phone, :email, :site, :adress, :responsible, :account_id, :contact_id, :notes)
+    end
+    
+    def history_note
+      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: "#{@company.name}", obj_link: account_deal_path(current_user.account_id, @company.id))
+      note.save
     end
 end

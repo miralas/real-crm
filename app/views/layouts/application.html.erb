@@ -27,6 +27,7 @@
   <%= link_to 'Companies', account_companies_path(current_user.account_id) %>
   <%= link_to 'Contacts', account_contacts_path(current_user.account_id) %>
   <%= link_to 'Tasks', account_tasks_path(current_user.account_id) %>
+  <%= link_to 'Last actions', account_histories_path(current_user.account_id) %>
   <%= link_to 'Calendar', account_calendar_path(current_user.account_id)%>
   <% else %>
     <%= redirect_to login_path %>
