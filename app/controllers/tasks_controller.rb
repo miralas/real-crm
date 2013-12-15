@@ -7,6 +7,15 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.where(account_id: current_user.account_id)
+    respond_to do |format|
+      format.html { 
+        @tasks = Task.where(account_id: current_user.account_id)
+      }
+      format.json  {
+        @tasks = Task.where(account_id: current_user.account_id)
+        render json:  @tasks
+      }
+    end
   end
 
   # GET /tasks/1

@@ -8,16 +8,16 @@ $(document).on "ready page:load", ->
     firstDay: 1
     timeFormat: "HH:mm{ - HH:mm} "
     
-    #eventSources: [
-    #  url: '/calendar_events'
-    #  color: "green"
-    #  textColor: "black"
-    #  ignoreTimezone: false
-    #]
+    eventSources: [
+      url: $("#calendar").attr("account_path") + "/tasks/",
+      color: "green",
+      textColor: "black",
+      ignoreTimezone: false
+    ]
     
-    #eventClick: (event) ->
-    #  window.open event.url, "_self" if event.url
+    eventClick: (event) ->
+      window.open event.url, "_self" if event.url
 
-    #dayClick: (date, allDay, jsEvent, view) ->
-    #  window.open $("#calendar").attr("account_path") + "/events/new?date=" + date, "_self"
+    dayClick: (date, allDay, jsEvent, view) ->
+      window.open $("#calendar").attr("account_path") + "/tasks/new?date=" + date, "_self"
   )

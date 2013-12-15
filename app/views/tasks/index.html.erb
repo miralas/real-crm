@@ -6,7 +6,9 @@
       <th>Title</th>
       <th>Type</th>
       <th>Description</th>
-      <th>Date</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Allday</th>
       <th>Responsible</th>
       <th>Contact</th>
       <th>Company</th>
@@ -23,7 +25,9 @@
         <td><%= task.title %></td>
         <td><%= task.type_of_task %></td>
         <td><%= task.description %></td>
-        <td><%= task.date %></td>
+        <td><%= task.starts_at %></td>
+        <td><%= task.ends_at %></td>
+        <td><%= task.all_day %></td>
         <% @owner = User.find_by(id: task.responsible) %>
         <td><%= link_to @owner.email, account_user_path(task.account_id, task.responsible) %></td>
         <% @contact = Contact.find_by(id: task.contact_id) %>
@@ -42,4 +46,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_account_task_path %>
+<%= link_to 'New Task', new_account_task_path(current_user.account_id) %>
