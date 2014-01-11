@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :deals
   has_many :companies
   has_many :tasks
+  has_many :messages
   has_secure_password
   
   validates_associated :role

@@ -10,7 +10,9 @@ RealCrm::Application.routes.draw do
     resources :companies
     resources :contacts
     resources :tasks
-    resources :histories
+    resources :histories 
+    resources :conversations
+    resources :messages
     get 'calendar' => 'calendar#index'
   end
 

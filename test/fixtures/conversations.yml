@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_owner_id: 1
+  second_owner_id: 1
+  account_id: 1
+
+two:
+  first_owner_id: 1
+  second_owner_id: 1
+  account_id: 1

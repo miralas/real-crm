@@ -9,6 +9,12 @@ gem 'sqlite3'
 #for calendar
 gem 'fullcalendar-rails'
 
+#faye
+gem 'faye'
+
+#rails autolink
+gem 'rails_autolink'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

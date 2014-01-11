@@ -94,7 +94,7 @@ class TasksController < ApplicationController
     end
     
     def history_note
-      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: "#{@task.name}", obj_link: account_deal_path(current_user.account_id, @task.id))
+      note = History.create(user_id: current_user.id, account_id: params[:account_id], action: "#{params[:action]} #{params[:controller]}", obj_name: "#{@task.title}", obj_link: account_deal_path(current_user.account_id, @task.id))
       note.save
     end
 end

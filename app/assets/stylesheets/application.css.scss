@@ -12,13 +12,56 @@
  *= require_tree .
  */
 
+body {
+  background: image_url('back.png') repeat-y;
+  background-size: 100%;
+  margin: 0% 7%;
+  #copyright {
+    padding-top: 20px;
+    text-align: center;  
+  }
+}
+
+#menu {
+  li {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    float: left;
+    width: 90px;
+    margin: 0px 1px;
+    border: 1px solid #bbb;
+    background: #bbb;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+.dock {
+  padding: 25px;
+  background: image_url('pad_texture.png');
+  border-radius: 6px;
+  text-align: center;
+  position: relative;
+  img {
+    position: relative;
+    top: 0px;
+    z-index: 1;
+  }
+}
+
 .paper {
   border: 1px solid #bbb;
-  box-shadow: 3px 3px 3px grey;
+  box-shadow: 3px 3px 3px black;
   border-radius: 3px;
   padding: 20px;
   position: relative;
-  background: image_url('clean_textile.png');
+  top: -45px;
+  background: image_url('exclusive_paper.png');
   
   &:before {
     content: " ";

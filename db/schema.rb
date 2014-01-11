@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215003142) do
+ActiveRecord::Schema.define(version: 20131218002600) do
 
   create_table "accounts", force: true do |t|
     t.integer  "owner_id"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20131215003142) do
     t.datetime "updated_at"
   end
 
+  create_table "conversations", force: true do |t|
+    t.integer  "first_owner_id"
+    t.integer  "second_owner_id"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "deals", force: true do |t|
     t.string   "name"
     t.string   "status"
@@ -67,6 +75,17 @@ ActiveRecord::Schema.define(version: 20131215003142) do
     t.string   "action"
     t.string   "obj_name"
     t.string   "obj_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.string   "title"
+    t.text     "message"
+    t.string   "status"
+    t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

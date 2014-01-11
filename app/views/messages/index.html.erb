@@ -1,0 +1,9 @@
+<h1>Listing messages</h1>
+
+<ul>
+<%= render @messages %>
+
+<li id='new_message'></li>
+</ul>
+
+<%= link_to "add message", new_account_message_path(current_user.account), remote: true %>

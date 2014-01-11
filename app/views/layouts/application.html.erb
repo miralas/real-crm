@@ -21,18 +21,54 @@
   </div>
   
   <% if current_user %>
-  <%= link_to 'My Profile', account_user_path(current_user.account_id, current_user)%>
-  <%= link_to 'Users', account_user_index_path(current_user.account_id) %>
-  <%= link_to 'Deals', account_deals_path(current_user.account_id)%>
-  <%= link_to 'Companies', account_companies_path(current_user.account_id) %>
-  <%= link_to 'Contacts', account_contacts_path(current_user.account_id) %>
-  <%= link_to 'Tasks', account_tasks_path(current_user.account_id) %>
-  <%= link_to 'Last actions', account_histories_path(current_user.account_id) %>
-  <%= link_to 'Calendar', account_calendar_path(current_user.account_id)%>
+  <div id="menu">
+    <ul>
+      <li>
+        <%= link_to 'My Profile', account_user_path(current_user.account_id, current_user)%>
+      </li>
+      <li>
+        <%= link_to 'Users', account_user_index_path(current_user.account_id) %>
+      </li>
+      <li>
+        <%= link_to 'Deals', account_deals_path(current_user.account_id)%>
+      </li>
+      <li>
+        <%= link_to 'Companies', account_companies_path(current_user.account_id) %>
+      </li>
+      <li>
+        <%= link_to 'Contacts', account_contacts_path(current_user.account_id) %>
+      </li>
+      <li>
+        <%= link_to 'Tasks', account_tasks_path(current_user.account_id) %>
+      </li>
+      <li>
+        <%= link_to 'Last actions', account_histories_path(current_user.account_id) %>
+      </li>
+      <li>
+        <%= link_to "Messages", account_conversations_path(current_user.account_id) %>
+        <% if find_new_messages > 0 %>
+          <%= link_to "#{find_new_messages}", account_conversations_path(current_user.account_id) %>  
+        <% end %>
+      </li>
+      <li>
+        <%= link_to 'Calendar', account_calendar_path(current_user.account_id)%>
+      </li>
+    </ul>
+    <div class='clear'></div>
+  </div>
   <% else %>
     <%= redirect_to login_path %>
   <% end %>
-<%= yield %>
-
+  <div class='dock'>
+    <%= image_tag ('clip.png') %>    
+    <div class='paper'>
+        <%= yield %>
+    </div>
+  </div>
+<div id="footer">
+  <div id="copyright">
+    <%= image_tag ('logo_bottom.png') %>
+  </div>
+</div>
 </body>
 </html>

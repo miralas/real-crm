@@ -1,0 +1,19 @@
+<h1>Listing conversations</h1>
+
+    <% @conversations.each do |conversation| %>
+    <div>
+      Разговор с 
+      <% if conversation.first_owner_id == current_user.id %>
+        <% @owner = User.find_by(id: conversation.second_owner_id) %>
+        <%= @owner.name %>
+      <% else %>
+        <% @owner = User.find_by(id: conversation.first_owner_id) %>
+        <%= @owner.name %>
+      <% end %>
+      <%= link_to 'Show', account_conversation_path(current_user.account_id, conversation) %>
+      <%= link_to 'Destroy', account_conversation_path(current_user.account_id, conversation), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+      <br>
+    <% end %>
+
+<%= link_to 'Add Conversation', new_account_message_path(current_user.account) %>

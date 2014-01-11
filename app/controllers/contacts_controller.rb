@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_action :set_special_params, only: [:show]
   after_action :history_note, only: [:create, :edit, :destroy]
   before_action :authorize
-
+  
   # GET /contacts
   # GET /contacts.json
   def index

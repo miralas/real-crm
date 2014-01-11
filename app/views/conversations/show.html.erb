@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<ul>
+   <% @messages.each do |message| %>
+    <li class='<%= message.status %>' id='message_<%= message.id %>'>
+        <% @sender = User.find_by(id: message.sender_id) %>
+        <%= link_to @sender.email, account_user_path(current_user.account_id, message.sender_id) %>
+        <%= message.title %>
+        <%= auto_link(message.message) %>
+        <%= message.created_at %>
+    </li>
+    <% end %>
+
+<li id='new_messages'></li>
+</ul>
+
+<%= render 'form' %>
