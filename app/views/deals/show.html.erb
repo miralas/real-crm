@@ -1,34 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название:</strong>
   <%= @deal.name %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong>Статус:</strong>
   <%= @deal.status %>
 </p>
 
 <p>
-  <strong>Budget:</strong>
+  <strong>Бюджет:</strong>
   <%= @deal.budget %>
 </p>
 
 <p>
-  <strong>Responsible:</strong>
+  <strong>Ответственный:</strong>
   <%= link_to @owner.email, account_user_path(@deal.account_id, @deal.responsible) %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong>Примечание:</strong>
   <%= @deal.notes %>
 </p>
 
 <p>
-  <strong>Task:</strong>
+  <strong>Задача:</strong>
   <%= @deal.task %>
 </p>
 
-<%= link_to 'Edit', edit_account_deal_path(@deal.account_id, @deal) %> |
-<%= link_to_function 'Back', 'history.back()' %>
+<%= link_to 'Редактировать', edit_account_deal_path(@deal.account_id, @deal) %> |
+<%= link_to_function 'Назад', 'history.back()' %>

@@ -1,6 +1,5 @@
-<h1>Editing company</h1>
+<h1>Редактирование компании</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', account_company_path(current_user.account_id, @company) %> |
-<%= link_to 'Back', account_companies_path(current_user.account_id) %>
+<%= link_to 'Отмена', account_companies_path(current_user.account_id) %>

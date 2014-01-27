@@ -1,19 +1,17 @@
-<h1>Listing conversations</h1>
+<h1>Диалоги</h1>
 
     <% @conversations.each do |conversation| %>
-    <div>
-      Разговор с 
+    <div class='conversation'>
+       
       <% if conversation.first_owner_id == current_user.id %>
         <% @owner = User.find_by(id: conversation.second_owner_id) %>
-        <%= @owner.name %>
       <% else %>
         <% @owner = User.find_by(id: conversation.first_owner_id) %>
-        <%= @owner.name %>
       <% end %>
-      <%= link_to 'Show', account_conversation_path(current_user.account_id, conversation) %>
-      <%= link_to 'Destroy', account_conversation_path(current_user.account_id, conversation), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Разговор с #{@owner.name}", account_conversation_path(current_user.account_id, conversation) %>
     </div>
+    <%= link_to 'Удалить', account_conversation_path(current_user.account_id, conversation), id: 'delete', method: :delete, data: { confirm: 'Are you sure?' } %>
       <br>
     <% end %>
-
-<%= link_to 'Add Conversation', new_account_message_path(current_user.account) %>
+    <div class='clear'></div>
+<%= link_to 'Создать новый диалог', new_account_message_path(current_user.account) %>

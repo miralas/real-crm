@@ -12,38 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "ФИО" %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label "Телефон" %>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label "E-mail" %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :skype %><br>
+    <%= f.label "Skype" %>
     <%= f.text_field :skype %>
   </div>
   <div class="field">
-    <%= f.label :post %><br>
+    <%= f.label "Адрес" %>
     <%= f.text_field :post %>
   </div>
   <div class="field">
-    <%= f.label :responsible %><br>
+    <%= f.label "Ответственный" %>
     <%= f.collection_select :responsible, current_user.account.users, :id, :email, {include_blank: false} %>
   </div>
   <div class="field">
-    <%= f.label :company_id %><br>
+    <%= f.label "Компания" %>
     <%= f.collection_select :company_id, current_user.account.companies, :id, :email, {include_blank: false} %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label "Примечание" %>
     <%= f.text_area :notes %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Сохранить контакт" %>
   </div>
 <% end %>

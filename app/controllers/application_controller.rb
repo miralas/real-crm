@@ -23,4 +23,7 @@ class ApplicationController < ActionController::Base
     expires_in 5.minutes, public: true
   end
   
+  def mes
+    @new_messages = Message.where(recipient_id: current_user.id, status: 'new').count
+  end
 end

@@ -9,9 +9,6 @@ gem 'sqlite3'
 #for calendar
 gem 'fullcalendar-rails'
 
-#faye
-gem 'faye'
-
 #rails autolink
 gem 'rails_autolink'
 

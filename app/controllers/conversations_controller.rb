@@ -10,6 +10,11 @@ class ConversationsController < ApplicationController
   # GET /conversations/1
   # GET /conversations/1.json
   def show
+    if (@conversation.first_owner_id == current_user.id)
+      @interlocutor = User.find_by(id: @conversation.second_owner_id)
+    else
+      @interlocutor = User.find_by(id: @conversation.first_owner_id)
+    end
     @messages = Message.where(conversation_id: @conversation.id)
     @status_new = Message.where(conversation_id: @conversation.id, status: 'new', recipient_id: current_user.id)
     @status_new.each do |new_mes|
@@ -17,6 +22,7 @@ class ConversationsController < ApplicationController
       new_mes.save
     end
     @message = Message.new
+    
   end
 
   # GET /conversations/new

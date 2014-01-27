@@ -1,18 +1,18 @@
-<h1>Listing tasks</h1>
+<h1>Просмотр задач</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Allday</th>
-      <th>Responsible</th>
-      <th>Contact</th>
-      <th>Company</th>
-      <th>Deal</th>
+      <th>Название</th>
+      <th>Тип</th>
+      <th>Описание</th>
+      <th>Дата начала</th>
+      <th>Дата окончания</th>
+      <th>Весь день</th>
+      <th>Ответственный</th>
+      <th>Контакт</th>
+      <th>Компания</th>
+      <th>Сделка</th>
       <th></th>
       <th></th>
       <th></th>
@@ -36,9 +36,9 @@
         <td><%= link_to @company.name, account_company_path(task.account_id, task.company_id) %></td>
         <% @deal = Deal.find_by(id: task.deal_id) %>
         <td><%= link_to @deal.name, account_deal_path(task.account_id, task.deal_id) %></td>
-        <td><%= link_to 'Show', account_task_path(task.account_id, task) %></td>
-        <td><%= link_to 'Edit', edit_account_task_path(task.account_id, task) %></td>
-        <td><%= link_to 'Destroy', account_task_path(task.account_id, task), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        <td><%= link_to 'Подробнее', account_task_path(task.account_id, task) %></td>
+        <td><%= link_to 'Редактировать', edit_account_task_path(task.account_id, task) %></td>
+        <td><%= link_to 'Удалить', account_task_path(task.account_id, task), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
@@ -46,4 +46,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_account_task_path(current_user.account_id) %>
+<%= link_to 'Добавить задачу', new_account_task_path(current_user.account_id) %>

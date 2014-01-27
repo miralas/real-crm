@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label "Название" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
+    <%= f.label "Статус" %><br>
     <%= f.text_field :status %>
   </div>
   <div class="field">
-    <%= f.label :budget %><br>
+    <%= f.label "Бюджет" %><br>
     <%= f.number_field :budget %>
   </div>
   <div class="field">
-    <%= f.label :responsible %><br>
+    <%= f.label "Ответственный" %><br>
     <%= f.collection_select :responsible, current_user.account.users, :id, :email, {include_blank: false} %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label "Примечание" %><br>
     <%= f.text_area :notes %>
   </div>
   <div class="field">
-    <%= f.label :task %><br>
+    <%= f.label "Задача" %><br>
     <%= f.number_field :task %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Сохранить" %>
   </div>
 <% end %>

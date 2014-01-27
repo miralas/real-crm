@@ -12,13 +12,11 @@
   <% end %>
 
   <li class='new' id='message_content'>
-    <%= f.label :recipient_id %>
-    <%= f.collection_select :recipient_id, User.where("account_id = #{current_user.account_id} and id != #{current_user.id}"), :id, :email, {include_blank: false} %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :message %>
-    <%= f.text_area :message %>
-    <%= f.submit 'add' %>
+    <%= f.label "Выберете собеседника" %>
+    <%= f.collection_select :recipient_id, User.where("account_id = #{current_user.account_id} and id != #{current_user.id}"), :id, :email, {include_blank: false} %> <br/>
+    <%= f.label "Ваше сообщение" %>
+    <%= f.text_area :message %> <br/>
+    <%= f.submit 'Отправить' %>
   </li>
 
 <% end %>

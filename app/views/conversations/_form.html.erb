@@ -10,15 +10,12 @@
       </ul>
     </div>
   <% end %>
-
-  <li class='new' id='message_<%= @message.id %>'>
-    <%= f.label :recipient_id %>
-    <%= f.collection_select :recipient_id, current_user.account.users, :id, :email, {include_blank: false} %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :message %>
+  
+  <li class='new' id='message_content'>
+    <%= link_to @interlocutor.email, account_user_path(current_user.account, @interlocutor)%>
+    <%= f.label "Введите Ваше сообщение" %>
     <%= f.text_area :message %>
-    <%= f.submit 'add' %>
+    <%= f.submit 'Отправить' %>
   </li>
 
 <% end %>

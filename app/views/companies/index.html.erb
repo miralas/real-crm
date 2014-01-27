@@ -1,16 +1,16 @@
-<h1>Listing companies</h1>
+<h1>Просмотр компаний</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Phone</th>
+      <th>Название</th>
+      <th>Телефон</th>
       <th>Email</th>
       <th>Site</th>
-      <th>Adress</th>
-      <th>Responsible</th>
-      <th>Contact</th>
-      <th>Notes</th>
+      <th>Адрес</th>
+      <th>Ответственный</th>
+      <th>Контакт</th>
+      <th>Примечание</th>
       <th></th>
       <th></th>
       <th></th>
@@ -30,9 +30,9 @@
         <% @contact = Contact.find_by(id: company.contact_id) %>
         <td><%= link_to @contact.name, account_contact_path(company.account_id, company.contact_id) %></td>
         <td><%= company.notes %></td>
-        <td><%= link_to 'Show', account_company_path(current_user.account_id, company) %></td>
-        <td><%= link_to 'Edit', edit_account_company_path(current_user.account_id, company) %></td>
-        <td><%= link_to 'Destroy', account_company_path(current_user.account_id, company), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        <td><%= link_to 'Подробнее', account_company_path(current_user.account_id, company) %></td>
+        <td><%= link_to 'Редактировать', edit_account_company_path(current_user.account_id, company) %></td>
+        <td><%= link_to 'Удалить', account_company_path(current_user.account_id, company), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Company', new_account_company_path %>
+<%= link_to 'Добавить компанию', new_account_company_path %>

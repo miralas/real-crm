@@ -1,54 +1,54 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Название:</strong>
   <%= @task.title %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong>Тип:</strong>
   <%= @task.type_of_task %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Описание:</strong>
   <%= @task.description %>
 </p>
 
 <p>
-  <strong>Start date:</strong>
-  <%= @task.starts_date %>
+  <strong>Дата начала:</strong>
+  <%= @task.starts_at %>
 </p>
 
 <p>
-  <strong>End date:</strong>
-  <%= @task.ends_date %>
+  <strong>Дата окончания:</strong>
+  <%= @task.ends_at %>
 </p>
 
 <p>
-  <strong>Allday:</strong>
+  <strong>Весь день:</strong>
   <%= @task.all_day %>
 </p>
 
 <p>
-  <strong>Responsible:</strong>
+  <strong>Ответственный:</strong>
   <%= @task.responsible %>
 </p>
 
 <p>
-  <strong>Contact:</strong>
+  <strong>Контакт:</strong>
   <%= @task.contact_id %>
 </p>
 
 <p>
-  <strong>Company:</strong>
+  <strong>Компания:</strong>
   <%= @task.company_id %>
 </p>
 
 <p>
-  <strong>Deal:</strong>
+  <strong>Сделка:</strong>
   <%= @task.deal_id %>
 </p>
 
-<%= link_to 'Edit', edit_account_task_path(@task.account_id, @task) %> |
-<%= link_to 'Back', account_tasks_path %>
+<%= link_to 'Редактировать', edit_account_task_path(@task.account_id, @task) %> |
+<%= link_to 'Назад', account_tasks_path %>

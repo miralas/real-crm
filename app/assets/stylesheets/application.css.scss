@@ -23,12 +23,13 @@ body {
 }
 
 #menu {
+  width: 100%;
   li {
     display: block;
     text-decoration: none;
     text-align: center;
     float: left;
-    width: 90px;
+    //width: 90px;
     margin: 0px 1px;
     border: 1px solid #bbb;
     background: #bbb;
@@ -45,8 +46,10 @@ body {
   padding: 25px;
   background: image_url('pad_texture.png');
   border-radius: 6px;
+  list-style: none;
   text-align: center;
   position: relative;
+  box-shadow: 3px 3px 3px black;
   img {
     position: relative;
     top: 0px;
@@ -55,36 +58,12 @@ body {
 }
 
 .paper {
+  text-align: left;
   border: 1px solid #bbb;
   box-shadow: 3px 3px 3px black;
   border-radius: 3px;
-  padding: 20px;
+  padding: 30px 20px;
   position: relative;
   top: -45px;
   background: image_url('exclusive_paper.png');
-  
-  &:before {
-    content: " ";
-    left: 10px;
-    top: 10px;
-    position: absolute;
-    height: 7px;
-    width: 8px;
-    background: #888;
-    border: 1px solid #aaa;
-    border-radius: 7px;
-    box-shadow: 2px 2px 2px grey;
-  }
-  &:after {
-    content: " ";
-    right: 10px;
-    top: 12px;
-    position: absolute;
-    height: 7px;
-    width: 7px;
-    background: #888;
-    border: 1px solid #aaa;
-    border-radius: 7px;
-    box-shadow: 2px 2px 2px grey;
-  }
 }

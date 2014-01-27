@@ -1,6 +1,5 @@
-<h1>Editing contact</h1>
+<h1>Редактирование контакта</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', account_contact_path(current_user.account_id, @contact) %> |
-<%= link_to 'Back', account_contacts_path(current_user.account_id) %>
+<%= link_to 'Отмена', account_contacts_path(current_user.account_id) %>

@@ -1,16 +1,14 @@
-<h1>Listing contacts</h1>
-
+<h1>Контакты</h1>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Email</th>
+      <th>Ф.И.О.</th>
+      <th>Контактный телефон</th>
+      <th>Контактный e-mail</th>
       <th>Skype</th>
-      <th>Post</th>
-      <th>Responsible</th>
-      <th>Company</th>
-      <th>Notes</th>
+      <th>Адрес</th>
+      <th>Ответственный</th>
+      <th>Компания</th>
       <th></th>
       <th></th>
       <th></th>
@@ -29,10 +27,9 @@
         <td><%= link_to @owner.email, account_user_path(contact.account_id, contact.responsible) %></td>
         <% @company = Company.find_by(id: contact.company_id) %>
         <td><%= link_to @company.name, account_company_path(contact.account_id, contact.company_id) %></td>
-        <td><%= contact.notes %></td>
-        <td><%= link_to 'Show', account_contact_path(current_user.account_id, contact) %></td>
-        <td><%= link_to 'Edit', edit_account_contact_path(current_user.account_id, contact) %></td>
-        <td><%= link_to 'Destroy', account_contact_path(current_user.account_id, contact), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        <td><%= link_to 'Подробнее', account_contact_path(current_user.account_id, contact) %></td>
+        <td><%= link_to 'Редактировать', edit_account_contact_path(current_user.account_id, contact) %></td>
+        <td><%= link_to 'Удалить', account_contact_path(current_user.account_id, contact), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Contact', new_account_contact_path %>
+<%= link_to 'Добавить контакт', new_account_contact_path %>

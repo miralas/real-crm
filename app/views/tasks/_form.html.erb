@@ -12,46 +12,46 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label "Название" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :type_of_task %><br>
+    <%= f.label "Тип" %><br>
     <%= f.text_field :type_of_task %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label "Описание" %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :start_at %><br>
+    <%= f.label "Дата начала" %><br>
     <%= f.datetime_select :starts_at %>
   </div>
   <div class="field">
-    <%= f.label :end_at %><br>
+    <%= f.label "Дата окончания" %><br>
     <%= f.datetime_select :ends_at %>
   </div>
   <div class="field">
-    <%= f.label :all_day %><br>
+    <%= f.label "Весь день" %><br>
     <%= f.check_box :all_day %>
   </div>
   <div class="field">
-    <%= f.label :responsible %><br>
+    <%= f.label "Ответственный" %><br>
     <%= f.collection_select :responsible, current_user.account.users, :id, :email, {include_blank: false} %>
   </div>
   <div class="field">
-    <%= f.label :contact_id %><br>
+    <%= f.label "Контакт" %><br>
     <%= f.collection_select :contact_id, current_user.account.contacts, :id, :email, {include_blank: false} %>
   </div>
   <div class="field">
-    <%= f.label :company_id %><br>
+    <%= f.label "Компания" %><br>
     <%= f.collection_select :company_id, current_user.account.companies, :id, :email, {include_blank: false} %>
   </div>
   <div class="field">
-    <%= f.label :deal_id %><br>
+    <%= f.label "Сделка" %><br>
     <%= f.collection_select :deal_id, current_user.account.deals, :id, :name, {include_blank: false} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Сохранить" %>
   </div>
 <% end %>

@@ -10,48 +10,42 @@
   
   <div id="login">
     <% if session[:user_id] %>
-      You may <%= link_to t('sign_out'), logout_url, method: :delete %> here.<br/>
-      <%= "Hello #{User.find(session[:user_id]).email}" %>
+      Вы вошли как: <%= link_to "#{User.find(session[:user_id]).email}", account_user_path(current_user.account_id, current_user)%>
+      <%= link_to "Выйти", logout_url, method: :delete %><br/>
     <% else %>
       <%= link_to t('log_in'), login_path %>
     <% end %>
-    <br/>
-    <%= link_to 'english', url_for(locale: 'en') %> |
-    <%= link_to 'русский', url_for(locale: 'ru') %>
   </div>
   
   <% if current_user %>
   <div id="menu">
     <ul>
       <li>
-        <%= link_to 'My Profile', account_user_path(current_user.account_id, current_user)%>
+        <%= link_to 'Мой профиль', account_user_path(current_user.account_id, current_user)%>
       </li>
       <li>
-        <%= link_to 'Users', account_user_index_path(current_user.account_id) %>
+        <%= link_to 'Пользователи', account_user_index_path(current_user.account_id) %>
       </li>
       <li>
-        <%= link_to 'Deals', account_deals_path(current_user.account_id)%>
+        <%= link_to 'Сделки', account_deals_path(current_user.account_id)%>
       </li>
       <li>
-        <%= link_to 'Companies', account_companies_path(current_user.account_id) %>
+        <%= link_to 'Компании', account_companies_path(current_user.account_id) %>
       </li>
       <li>
-        <%= link_to 'Contacts', account_contacts_path(current_user.account_id) %>
+        <%= link_to 'Контакты', account_contacts_path(current_user.account_id) %>
       </li>
       <li>
-        <%= link_to 'Tasks', account_tasks_path(current_user.account_id) %>
+        <%= link_to 'Задачи', account_tasks_path(current_user.account_id) %>
       </li>
       <li>
-        <%= link_to 'Last actions', account_histories_path(current_user.account_id) %>
+        <%= link_to 'Последние действия', account_histories_path(current_user.account_id) %>
+      </li>
+      <li id='mydiv'>
+        <%= link_to 'Сообщения', account_conversations_path(current_user.account_id) %>
       </li>
       <li>
-        <%= link_to "Messages", account_conversations_path(current_user.account_id) %>
-        <% if find_new_messages > 0 %>
-          <%= link_to "#{find_new_messages}", account_conversations_path(current_user.account_id) %>  
-        <% end %>
-      </li>
-      <li>
-        <%= link_to 'Calendar', account_calendar_path(current_user.account_id)%>
+        <%= link_to 'Календарь', account_calendar_path(current_user.account_id)%>
       </li>
     </ul>
     <div class='clear'></div>

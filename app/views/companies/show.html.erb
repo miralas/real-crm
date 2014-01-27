@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название:</strong>
   <%= @company.name %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>Телефон:</strong>
   <%= @company.phone %>
 </p>
 
@@ -21,24 +21,24 @@
 </p>
 
 <p>
-  <strong>Adress:</strong>
+  <strong>Адрес:</strong>
   <%= @company.adress %>
 </p>
 
 <p>
-  <strong>Responsible:</strong>
+  <strong>Ответственный:</strong>
   <%= link_to @owner.email, account_user_path(@company.account_id, @company.responsible) %>
 </p>
 
 <p>
-  <strong>Contact:</strong>
+  <strong>Контакт:</strong>
   <%= link_to @contact.name, account_contact_path(@company.account_id, @company.contact_id) %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong>Примечание:</strong>
   <%= @company.notes %>
 </p>
 
-<%= link_to 'Edit', edit_account_company_path(current_user.account_id, @company) %> |
-<%= link_to 'Back', account_companies_path(current_user.account_id) %>
+<%= link_to 'Редактировать', edit_account_company_path(current_user.account_id, @company) %> |
+<%= link_to 'Назад', account_companies_path(current_user.account_id) %>
